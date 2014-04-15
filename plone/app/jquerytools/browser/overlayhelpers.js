@@ -207,7 +207,7 @@ jQuery(function ($) {
             '<div id="' + pbo.nt +
             '" class="overlay overlay-' + pbo.subtype +
             ' ' + (pbo.cssclass || '') +
-            '"><div class="close"><a href="#" class="hiddenStructure" title="Close this box">' + 
+            '"><div class="close"><a href="#" class="hiddenStructure" title="Close this box">' +
             close_message +
             '</a></div></div>');
 
@@ -376,7 +376,12 @@ jQuery(function ($) {
                 ajax_parent.empty().append(el);
 
                 // execute inline scripts
-                $.buildFragment([responseText], [document], scripts);
+                try {
+                    // jQuery 1.9 does not support [document] but just document
+                    $.buildFragment([responseText], [document], scripts);
+                } catch(e) {
+                    $.buildFragment([responseText], document, scripts);
+                }
                 if (scripts.length) {
                     $.each(scripts, function() {
                         $.globalEval( this.text || this.textContent || this.innerHTML || "" );
@@ -550,7 +555,12 @@ jQuery(function ($) {
             }
 
             // execute inline scripts
-            $.buildFragment([responseText], [document], scripts);
+            try {
+                // jQuery 1.9 does not support [document] but just document
+                $.buildFragment([responseText], [document], scripts);
+            } catch(e) {
+                $.buildFragment([responseText], document, scripts);
+            }
             if (scripts.length) {
                 $.each(scripts, function() {
                     $.globalEval( this.text || this.textContent || this.innerHTML || "" );

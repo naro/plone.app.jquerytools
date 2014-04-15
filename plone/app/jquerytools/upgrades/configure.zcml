@@ -1,9 +1,9 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
-  
+
   <!-- Jquerytools upgrades -->
-  
+
   <genericsetup:upgradeStep
       source="*"
       destination="1.0rc2"
@@ -22,8 +22,17 @@
       profile="plone.app.jquerytools:default"
       />
 
+  <genericsetup:upgradeStep
+      source="1.2b4"
+      destination="3"
+      title="Introduce jQuery compatibilty script"
+      description=""
+      handler=".upgradeto3"
+      profile="plone.app.jquerytools:default"
+      />
+
   <!-- steps on Plone upgrade -->
-  
+
   <!-- disable overlays.css when upgrading from Plone 3 to 4 -->
   <genericsetup:upgradeStep
       source="4001"

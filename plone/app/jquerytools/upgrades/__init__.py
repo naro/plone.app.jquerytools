@@ -11,3 +11,9 @@ def upgrade1to2(context):
         'profile-plone.app.jquerytools:default',
         'jquerytools-various',
         purge_old=False)
+
+
+def upgradeto3(context):
+    setup = getToolByName(context, "portal_setup")
+    setup.runAllImportStepsFromProfile(
+        'profile-plone.app.jquerytools:default')
