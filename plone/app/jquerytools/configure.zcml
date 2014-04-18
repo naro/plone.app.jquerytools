@@ -48,6 +48,11 @@
         />
 
     <resource
+        name="plone.app.jquerytools.post-compat.js"
+        file="browser/post-compat.js"
+        />
+
+    <resource
         name="plone.app.jquerytools.overlayhelpers.js"
         file="browser/overlayhelpers.js"
         />

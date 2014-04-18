@@ -40,4 +40,11 @@
                 expression=""
                 insert-after="++resource++plone.app.jquerytools.js"
                 />
+    <!-- inserting after jquerytools.form.js because it is added first and then another
+         javascripts moves the form.js down so post-compat will be last at the end. -->
+    <javascript cacheable="True" compression="none" cookable="True"
+                enabled="True" id="++resource++plone.app.jquerytools.post-compat.js" inline="False"
+                expression=""
+                insert-after="++resource++plone.app.jquerytools.form.js"
+                />
 </object>
